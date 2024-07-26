@@ -13,7 +13,12 @@ SRC = main\
 	elements\
 	texture\
 	rgb\
-	free
+	free\
+	map\
+	check_map\
+	player\
+	display\
+	raycasting
 SRCS = $(addprefix srcs/,$(addsuffix .c,$(SRC)))
 OBJS = $(addprefix srcs/,$(addsuffix .o,$(SRC)))
 DEPS = $(addprefix srcs/,$(addsuffix .d,$(SRC)))

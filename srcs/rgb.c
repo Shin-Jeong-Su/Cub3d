@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:48:29 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 16:37:47 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/26 18:30:54 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,22 @@ static void	save_rgb(char **rgb, int *where)
 	}
 }
 
-void	check_rgb(char *path, t_map_info *map_info, int where)
+void	check_rgb(char *path, t_data *data, int where)
 {
 	char	**rgb;
 
 	get_rgb(&rgb, path);
-	if (where == 0 && !(map_info->elem & (1 << 4)))
+	if (where == 0 && !(data->map_info->elem & (1 << 4)))
 	{
-		map_info->elem |= (1 << 4);
-		save_rgb(rgb, &(map_info->rgb->f));
+		data->map_info->elem |= (1 << 4);
+		save_rgb(rgb, &(data->rgb->f));
 	}
-	else if (where && !(map_info->elem & (1 << 5)))
+	else if (where && !(data->map_info->elem & (1 << 5)))
 	{
-		map_info->elem |= (1 << 5);
-		save_rgb(rgb, &(map_info->rgb->c));
+		data->map_info->elem |= (1 << 5);
+		save_rgb(rgb, &(data->rgb->c));
 	}
 	else
 		err("Error: elements\n");
+	free_tab(rgb);
 }

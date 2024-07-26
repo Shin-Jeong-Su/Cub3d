@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:30:51 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 16:34:01 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/26 18:31:23 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,38 @@ static int	get_tab(char **line, char ***tab, t_map_info *map_info)
 	return (EXIT_SUCCESS);
 }
 
-static void	check_elements(char **tab, t_map_info *map_info)
+static void	check_elements(char **tab, t_data *data)
 {
 	if (!ft_strncmp(tab[0], "NO", 3))
-		check_texture(tab[1], map_info, 0);
+		check_texture(tab[1], data, 0);
 	else if (!ft_strncmp(tab[0], "SO", 3))
-		check_texture(tab[1], map_info, 1);
+		check_texture(tab[1], data, 1);
 	else if (!ft_strncmp(tab[0], "WE", 3))
-		check_texture(tab[1], map_info, 2);
+		check_texture(tab[1], data, 2);
 	else if (!ft_strncmp(tab[0], "EA", 3))
-		check_texture(tab[1], map_info, 3);
+		check_texture(tab[1], data, 3);
 	else if (!ft_strncmp(tab[0], "F", 2))
-		check_rgb(tab[1], map_info, 0);
+		check_rgb(tab[1], data, 0);
 	else if (!ft_strncmp(tab[0], "C", 2))
-		check_rgb(tab[1], map_info, 1);
+		check_rgb(tab[1], data, 1);
 	else
 		err("Error: elements\n");
 }
 
-void	get_elements(t_map_info *map_info)
+void	get_elements(t_data *data)
 {
 	char	*line;
 	char	**tab;
 
-	if (map_info->elem == 63)
+	if (data->map_info->elem == 63)
 		return ;
-	if (get_tab(&line, &tab, map_info))
+	if (get_tab(&line, &tab, data->map_info))
 	{
-		get_elements(map_info);
+		get_elements(data);
 		return ;
 	}
-	check_elements(tab, map_info);
+	check_elements(tab, data);
 	free(line);
 	free_tab(tab);
-	get_elements(map_info);
+	get_elements(data);
 }

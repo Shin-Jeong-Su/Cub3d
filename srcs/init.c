@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:03:20 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 21:19:16 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/26 18:26:21 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	init_map_info(t_data *data)
 	if (data->map_info == 0)
 		sys_err();
 	data->map_info->elem = 0;
-	data->map_info->player = (t_player *)malloc(sizeof(t_player));
-	data->map_info->player->pos_y = 0;
-	data->map_info->player->pos_x = 0;
-	data->map_info->texture = (t_texture *)malloc(sizeof(t_texture));
-	data->map_info->rgb = (t_rgb *)malloc(sizeof(t_rgb));
-	data->map_info->rgb->f = 0;
-	data->map_info->rgb->c = 0;
+	data->player = (t_player *)malloc(sizeof(t_player));
+	data->player->pos_y = 0;
+	data->player->pos_x = 0;
+	data->texture = (t_texture *)malloc(sizeof(t_texture));
+	data->rgb = (t_rgb *)malloc(sizeof(t_rgb));
+	data->rgb->f = 0;
+	data->rgb->c = 0;
 }
 
 void	init(int ac, char **av, t_data *data)

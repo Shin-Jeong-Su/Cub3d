@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:38:33 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 16:41:43 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/26 12:43:37 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int	main(int ac, char **av)
 	atexit(chl);
 	init(ac, av, &data);
 	parse(&data);
+	display(&data);
 }

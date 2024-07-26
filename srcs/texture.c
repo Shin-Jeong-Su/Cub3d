@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:13:06 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 16:40:42 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/26 18:29:01 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,28 @@ static void	check_path_extension(char *path)
 		err("Error: elements: texture path\n");
 }
 
-void	check_texture(char *path, t_map_info *map_info, int where)
+void	check_texture(char *path, t_data *data, int where)
 {
 	check_path_extension(path);
-	if (where == 0 && !(map_info->elem & (1 << 0)))
+	if (where == 0 && !(data->map_info->elem & (1 << 0)))
 	{
-		map_info->elem |= (1 << 0);
-		map_info->texture->no = ft_strdup(path);
+		data->map_info->elem |= (1 << 0);
+		data->texture->no = ft_strdup(path);
 	}
-	else if (where == 1 && !(map_info->elem & (1 << 1)))
+	else if (where == 1 && !(data->map_info->elem & (1 << 1)))
 	{
-		map_info->elem |= (1 << 1);
-		map_info->texture->so = ft_strdup(path);
+		data->map_info->elem |= (1 << 1);
+		data->texture->so = ft_strdup(path);
 	}
-	else if (where == 2 && !(map_info->elem & (1 << 2)))
+	else if (where == 2 && !(data->map_info->elem & (1 << 2)))
 	{
-		map_info->elem |= (1 << 2);
-		map_info->texture->we = ft_strdup(path);
+		data->map_info->elem |= (1 << 2);
+		data->texture->we = ft_strdup(path);
 	}
-	else if (where == 3 && !(map_info->elem & (1 << 3)))
+	else if (where == 3 && !(data->map_info->elem & (1 << 3)))
 	{
-		map_info->elem |= (1 << 3);
-		map_info->texture->ea = ft_strdup(path);
+		data->map_info->elem |= (1 << 3);
+		data->texture->ea = ft_strdup(path);
 	}
 	else
 		err("Error: elements\n");
