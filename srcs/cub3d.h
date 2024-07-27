@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:00 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/26 18:36:11 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/27 16:34:25 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
+typedef enum e_tex_index
+{
+	NO = 0,
+	SO = 1,
+	WE = 2,
+	EA = 3
+}	t_tex_index;
+
 typedef struct s_rgb
 {
 	int	f;
@@ -32,13 +40,20 @@ typedef struct s_rgb
 
 typedef struct s_texture
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		tex_num;
-	double	wall_x;
+	int		**texture;
+	int		width;
+	int		height;
 }	t_texture;
+
+typedef struct s_texture_info
+{
+	t_texture	tex_tab[4];	
+	int			index;
+	int			tex_x;
+	int			tex_y;
+	double			step;
+	double			pos;
+}	t_texture_info;
 
 typedef struct s_player
 {
@@ -69,8 +84,7 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	double	time;
-	double	old_time;
+	double	wall_x;
 }	t_ray;
 
 typedef struct s_map_info
@@ -99,18 +113,19 @@ typedef struct s_img_info
 
 typedef struct s_data
 {
-	t_map_info	*map_info;
-	t_mlx_info	*mlx_info;
-	t_img_info	*img_info;
-	t_player	*player;
-	t_texture	*texture;
-	t_rgb		*rgb;
-	t_ray		*ray;
+	t_map_info		*map_info;
+	t_mlx_info		*mlx_info;
+	t_img_info		*img_info;
+	t_player		*player;
+	t_texture_info	*texture_info;
+	t_rgb			*rgb;
+	t_ray			*ray;
+	int				**buffer;
 }	t_data;
 
 //err.c
 int		err(char *s);
-int		sys_err(void);
+int		sys_err(char *s);
 //init.c
 void	init(int ac, char **av, t_data *data);
 //parse.c
@@ -134,4 +149,6 @@ void	save_player_info(int i, int j, t_data *data);
 void	display(t_data *data);
 //raycasting.c
 void	raycasting(t_data *data);
+//rendering.c
+int	rendering(t_data *data);
 #endif

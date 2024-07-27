@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:02:56 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/25 20:30:49 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/27 16:34:10 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	err(char *s)
 	return (EXIT_FAILURE);
 }
 
-int	sys_err(void)
+int	sys_err(char *s)
 {
-	perror("Error: ");
+	while (*s)
+		write(2, s++, 1);
+	perror(0);
 	exit(EXIT_FAILURE);
 	return (EXIT_FAILURE);
 }

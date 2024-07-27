@@ -18,7 +18,8 @@ SRC = main\
 	check_map\
 	player\
 	display\
-	raycasting
+	raycasting\
+	render
 SRCS = $(addprefix srcs/,$(addsuffix .c,$(SRC)))
 OBJS = $(addprefix srcs/,$(addsuffix .o,$(SRC)))
 DEPS = $(addprefix srcs/,$(addsuffix .d,$(SRC)))
