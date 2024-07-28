@@ -6,23 +6,37 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:55:56 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/26 18:26:40 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/28 17:38:53 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	parse(t_data *data)
+void	check_file_name(char *file)
 {
+	char	*dot;
+
+	dot = ft_strrchr(file, '.');
+	if (ft_strncmp(dot, ".cub", 5) != EXIT_SUCCESS)
+		err("Error: argument\n");
+}
+
+static void	open_file(char *file, t_data *data)
+{
+	data->map_info->fd = open(file, O_RDONLY);
+	if (data->map_info->fd < 0)
+		sys_err("Error: open: ");
+}
+
+void	parse(int ac, char **av, t_data *data)
+{
+	if (ac != 2)
+		err("Error: argument\n");
+	check_file_name(av[1]);
+	init_map_info(data);
+	init_mlx_info(data);
+	open_file(av[1], data);
 	get_elements(data);
 	get_map(data);
-    // printf("no : %s\n",data->map_info->texture->no);
-    // printf("so : %s\n",data->map_info->texture->so);
-    // printf("we : %s\n",data->map_info->texture->we);
-    // printf("ea : %s\n",data->map_info->texture->ea);
-    // printf("f : %d\n",data->map_info->rgb->f);
-    // printf("c : %d\n",data->map_info->rgb->c);
-	// for(int i=0;data->map_info->map[i]!=0;i++)
-	// 	printf("%s\n",data->map_info->map[i]);
 	close(data->map_info->fd);
 }

@@ -6,11 +6,11 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 17:11:59 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/17 17:12:16 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/28 18:07:01 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 static int	is_space(const char ch)
 {

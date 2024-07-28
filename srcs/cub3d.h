@@ -6,15 +6,15 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:00 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/27 16:34:25 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/28 18:05:43 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define SCREENWIDTH 1280
-# define SCREENHEIGHT 720
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -24,13 +24,13 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
-typedef enum e_tex_index
+enum e_tex_index
 {
 	NO = 0,
 	SO = 1,
 	WE = 2,
 	EA = 3
-}	t_tex_index;
+};
 
 typedef struct s_rgb
 {
@@ -40,7 +40,7 @@ typedef struct s_rgb
 
 typedef struct s_texture
 {
-	int		**texture;
+	int		**pixel;
 	int		width;
 	int		height;
 }	t_texture;
@@ -51,8 +51,8 @@ typedef struct s_texture_info
 	int			index;
 	int			tex_x;
 	int			tex_y;
-	double			step;
-	double			pos;
+	double		step;
+	double		pos;
 }	t_texture_info;
 
 typedef struct s_player
@@ -72,10 +72,10 @@ typedef struct s_ray
 	double	dir_y;
 	double	dir_x;
 	double	camera_x;
-	double	side_dist_y;
-	double	side_dist_x;
-	double	delta_dist_y;
-	double	delta_dist_x;
+	double	sidedist_y;
+	double	sidedist_x;
+	double	deltadist_y;
+	double	deltadist_x;
 	double	perp_wall_dist;
 	int		hit;
 	int		side;
@@ -127,9 +127,13 @@ typedef struct s_data
 int		err(char *s);
 int		sys_err(char *s);
 //init.c
-void	init(int ac, char **av, t_data *data);
+void	init_map_info(t_data *data);
+void	init_mlx_info(t_data *data);
+int		**init_int_tab(int width, int height);
+void	init_ray(t_data *data);
+void	init_img_info(t_data *data);
 //parse.c
-void	parse(t_data *data);
+void	parse(int ac, char **av, t_data *data);
 //free.c
 void	free_tab(char **tab);
 //elements.c
@@ -150,5 +154,5 @@ void	display(t_data *data);
 //raycasting.c
 void	raycasting(t_data *data);
 //rendering.c
-int	rendering(t_data *data);
+int		rendering(t_data *data);
 #endif

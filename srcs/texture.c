@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:13:06 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/27 16:47:28 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/28 17:43:52 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,36 @@ static void	check_path_extension(char *path)
 		err("Error: elements: texture path\n");
 }
 
+void	convert_to_img(t_img_info *img, char *path, void *mlx, t_texture *tex)
+{
+	img->img = mlx_xpm_file_to_image(mlx, path, &(tex->width), &(tex->height));
+	if (img->img == 0)
+		sys_err("Error: mlx xpm file to image: ");
+	img->addr = mlx_get_data_addr(img->img, \
+									&(img->bits_per_pixel), \
+									&(img->line_length), \
+									&(img->endian));
+}
+
 void	get_texture_image(char *path, t_data *data, int where)
 {
 	int			y;
 	int			x;
-	int			i;
-	t_img_info	img;
-	t_texture	*tex;
+	t_img_info	img_info;
+	t_texture	*texture;
 
 	check_path_extension(path);
-	tex = &(data->texture_info->tex_tab[where]);
-	img.img = mlx_xpm_file_to_image(data->mlx_info->mlx, path, &(tex->width), &(tex->height));
-	if (img.img == 0)
-		sys_err("Error: mlx xpm file to image: ");
-	img.addr = mlx_get_data_addr(img.img, &(img.bits_per_pixel), &(img.line_length), &(img.endian));
+	texture = &(data->texture_info->tex_tab[where]);
+	convert_to_img(&img_info, path, data->mlx_info->mlx, texture);
+	texture->pixel = init_int_tab(texture->width, texture->height);
 	y = -1;
-	tex->texture = (int **)malloc(sizeof (int *) * tex->height);
-	if (tex->texture == 0)
-		sys_err("Error: malloc: ");
-	i = -1;
-	while (++i < tex->width)
-	{
-		(tex->texture)[i] = malloc(sizeof(int) * tex->width);
-		if (tex->texture[i] == 0)
-			sys_err("Error: malloc: ");
-	}
-	while (++y < tex->height)
+	while (++y < texture->height)
 	{
 		x = -1;
-		while (++x < tex->width)
-			(tex->texture)[y][x] = img.addr[y * (img.line_length / 4) + x];
+		while (++x < texture->width)
+			(texture->pixel)[y][x] = *(unsigned int *)(img_info.addr \
+									+ (y * img_info.line_length) \
+									+ (x * img_info.bits_per_pixel / 8));
 	}
 }
 
@@ -83,4 +83,3 @@ void	check_texture(char *path, t_data *data, int where)
 	else
 		err("Error: elements\n");
 }
-
