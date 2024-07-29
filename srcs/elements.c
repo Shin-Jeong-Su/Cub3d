@@ -5,21 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 13:30:51 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/28 15:41:17 by jeshin           ###   ########.fr       */
+/*   Created: 2024/07/29 18:24:51 by jeshin            #+#    #+#             */
+/*   Updated: 2024/07/29 18:24:53 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_tab(char **line, char ***tab, t_map_info *map_info)
+static void	get_start_line(char **line, int fd)
+{
+	int		i;
+	char	**tab;
+
+	*line = get_next_line(fd);
+	if (*line == 0)
+		err("Error: elements\n");
+	tab = ft_split(*line, ' ');
+	i = -1;
+	if (tab[0] == 0)
+		err("Error: elements\n");
+	if (!ft_strncmp(tab[0], "\n", 2))
+	{
+		free_tab(tab);
+		free(*line);
+		get_start_line(line, fd);
+		return ;
+	}
+	free_tab(tab);
+}
+
+static int	get_elem_tab(char **line, char ***tab, t_map_info *map_info)
 {
 	int		size;
 	char	*lf_ptr;
 
-	(*line) = get_next_line(map_info->fd);
-	if (*line == 0)
-		return (err("Error: elements\n"));
+	get_start_line(line, map_info->fd);
 	lf_ptr = ft_strrchr(*line, '\n');
 	if (lf_ptr == 0)
 		return (err("Error: elements\n"));
@@ -64,7 +84,7 @@ void	get_elements(t_data *data)
 
 	if (data->map_info->elem == 63)
 		return ;
-	if (get_tab(&line, &tab, data->map_info))
+	if (get_elem_tab(&line, &tab, data->map_info))
 	{
 		get_elements(data);
 		return ;
