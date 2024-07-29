@@ -19,8 +19,11 @@ SRC = main\
 	player\
 	display\
 	raycasting\
-	buffer\
-	render
+	img_buffer\
+	render\
+	move\
+	hook\
+	rotate
 SRCS = $(addprefix srcs/,$(addsuffix .c,$(SRC)))
 OBJS = $(addprefix srcs/,$(addsuffix .o,$(SRC)))
 DEPS = $(addprefix srcs/,$(addsuffix .d,$(SRC)))

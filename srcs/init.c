@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:03:20 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/28 17:57:56 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/29 17:45:41 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,17 @@ void	init_mlx_info(t_data *data)
 										"cub3D");
 }
 
-void	init_img_info(t_data *data)
+void	init_img_info(t_img_info *img_info, t_mlx_info *mlx_info)
 {
-	data->img_info = (t_img_info *)malloc(sizeof(t_img_info));
-	if (data->img_info == 0)
-		sys_err("Error: malloc: ");
-	data->img_info->img = mlx_new_image(data->mlx_info->mlx, \
+	img_info->img = mlx_new_image(mlx_info->mlx, \
 										SCREENWIDTH, \
 										SCREENHEIGHT);
-	if (data->img_info->img == 0)
+	if (img_info->img == 0)
 		sys_err("Error: mlx new image: ");
-	data->img_info->addr = mlx_get_data_addr(data->img_info->img, \
-											&(data->img_info->bits_per_pixel), \
-											&(data->img_info->line_length), \
-											&(data->img_info->endian));
+	img_info->addr = mlx_get_data_addr(img_info->img, \
+											&(img_info->bits_per_pixel), \
+											&(img_info->line_length), \
+											&(img_info->endian));
 }
 
 int	**init_int_tab(int width, int height)

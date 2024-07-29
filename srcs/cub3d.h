@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:00 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 11:27:32 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/29 17:45:55 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define SCREENWIDTH 640
 # define SCREENHEIGHT 480
-# define MOVESPEED 0.0125
-# define ROTSPEED 0.015
+# define MOVESPEED 0.04
+# define ROTSPEED 0.04
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -131,7 +131,6 @@ typedef struct s_data
 {
 	t_map_info		*map_info;
 	t_mlx_info		*mlx_info;
-	t_img_info		*img_info;
 	t_player		*player;
 	t_texture_info	*texture_info;
 	t_rgb			*rgb;
@@ -147,7 +146,7 @@ void	init_map_info(t_data *data);
 void	init_mlx_info(t_data *data);
 int		**init_int_tab(int width, int height);
 void	init_ray(t_data *data);
-void	init_img_info(t_data *data);
+void	init_img_info(t_img_info *img_info, t_mlx_info *mlx_info);
 //parse.c
 void	parse(int ac, char **av, t_data *data);
 //free.c
@@ -170,7 +169,18 @@ void	display(t_data *data);
 //raycasting.c
 void	raycasting(t_data *data);
 //buffer.c
-void	set_buffer(int x, t_data *data);
+void	set_img_buffer(int x, t_data *data);
 //rendering.c
 int		rendering(t_data *data);
+//hook.c
+int		exit_cub(t_data *data);
+int		key_press(int key, t_data *data);
+int		key_release(int key, t_data *data);
+//move.c
+int		move_forward(t_data *data);
+int		move_backward(t_data *data);
+int		move_left(t_data *data);
+int		move_right(t_data *data);
+//rotate.c
+void	rotate(t_data *data, double dir);
 #endif

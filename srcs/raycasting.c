@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 13:19:44 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 11:28:35 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/29 11:38:46 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	raycasting(t_data *data)
 		set_ray(x, data->ray, data->player);
 		dda(data->ray, data->map_info->map);
 		calc_draw_range(data->ray);
-		set_buffer(x, data);
+		set_img_buffer(x, data);
 	}
 }

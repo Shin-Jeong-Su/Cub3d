@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:18:17 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 11:36:57 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/29 11:38:12 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	mapping_to_texture(t_ray *ray, t_player *player, \
 					* tex_info->step;
 }
 
-void	set_buffer(int x, t_data *data)
+void	set_img_buffer(int x, t_data *data)
 {
 	int					y;
 	int					color;
