@@ -19,6 +19,7 @@ SRC = main\
 	player\
 	display\
 	raycasting\
+	buffer\
 	render
 SRCS = $(addprefix srcs/,$(addsuffix .c,$(SRC)))
 OBJS = $(addprefix srcs/,$(addsuffix .o,$(SRC)))

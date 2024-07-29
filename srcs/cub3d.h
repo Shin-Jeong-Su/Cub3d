@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:00 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/28 18:05:43 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/29 11:27:32 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define SCREENWIDTH 640
 # define SCREENHEIGHT 480
+# define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -30,6 +32,17 @@ enum e_tex_index
 	SO = 1,
 	WE = 2,
 	EA = 3
+};
+
+enum e_key
+{
+	W = 13,
+	S = 1,
+	A = 0,
+	D = 2,
+	LEFT = 123,
+	RIGHT = 124,
+	ESC = 53
 };
 
 typedef struct s_rgb
@@ -63,6 +76,9 @@ typedef struct s_player
 	double	dir_x;
 	double	plane_y;
 	double	plane_x;
+	int		move_y;
+	int		move_x;
+	int		rotate;
 }	t_player;
 
 typedef struct s_ray
@@ -153,6 +169,8 @@ void	save_player_info(int i, int j, t_data *data);
 void	display(t_data *data);
 //raycasting.c
 void	raycasting(t_data *data);
+//buffer.c
+void	set_buffer(int x, t_data *data);
 //rendering.c
 int		rendering(t_data *data);
 #endif
