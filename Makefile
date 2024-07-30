@@ -23,7 +23,8 @@ SRC = main\
 	render\
 	move\
 	hook\
-	rotate
+	rotate\
+	validate
 SRCS = $(addprefix srcs/,$(addsuffix .c,$(SRC)))
 OBJS = $(addprefix srcs/,$(addsuffix .o,$(SRC)))
 DEPS = $(addprefix srcs/,$(addsuffix .d,$(SRC)))
