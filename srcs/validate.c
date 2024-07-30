@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 11:03:41 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/30 16:10:00 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 19:01:19 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_dydx(int *dy, int *dx)
 	dx[3] = -1;
 }
 
-int	check_validate(double y, double x, t_map_info *map_info)
+void	check_validate(double *y, double *x, char **map, t_player *player)
 {
 	int	k;
 	int	ny;
@@ -36,22 +36,21 @@ int	check_validate(double y, double x, t_map_info *map_info)
 	init_dydx(dy, dx);
 	while (++k < 4)
 	{
-		ny = (int)y + dy[k];
-		nx = (int)x + dx[k];
-		if (ny < 0 || nx < 0 || (map_info->map)[ny] == 0 || \
-		ft_strlen((map_info->map)[ny]) < (size_t)nx)
+		ny = (int)*y + dy[k];
+		nx = (int)*x + dx[k];
+		if (ny < 0 || nx < 0 || map[ny] == 0 || \
+		ft_strlen(map[ny]) < (size_t)nx)
 			continue ;
-		if ((map_info->map)[ny][nx] == '1')
+		if (map[ny][nx] == '1')
 		{
-			if (k == 0 && (y - (ny + 1) <= 0.05))
-				return (EXIT_FAILURE);
-			else if (k == 1 && (nx - x <= 0.05))
-				return (EXIT_FAILURE);
-			else if (k == 2 && (ny - y <= 0.05))
-				return (EXIT_FAILURE);
-			else if (k == 3 && (x - (nx + 1) <= 0.05))
-				return (EXIT_FAILURE);
+			if (k == 0 && (*y - (ny + 1) <= 0.2))
+				*y = player->pos_y;
+			if (k == 1 && (nx - *x <= 0.2))
+				*x = player->pos_x;
+			if (k == 2 && (ny - *y <= 0.2))
+				*y = player->pos_y;
+			if (k == 3 && (*x - (nx + 1) <= 0.2))
+				*x = player->pos_x;
 		}
 	}
-	return (EXIT_SUCCESS);
 }

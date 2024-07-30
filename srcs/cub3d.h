@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:00 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/30 11:12:01 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 18:59:04 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,5 +184,5 @@ int		move_right(t_data *data);
 //rotate.c
 void	rotate(t_data *data, double dir);
 //validate.c
-int		check_validate(double y, double x, t_map_info *map_info);
+void	check_validate(double *y, double *x, char **map, t_player *player);
 #endif
