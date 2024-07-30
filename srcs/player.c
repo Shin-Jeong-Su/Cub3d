@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:04:15 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/28 18:03:23 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:40:53 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	save_player_info(int i, int j, t_data *data)
 {
 	if (data->player->pos_y && data->player->pos_x)
 		err("Error: map: player\n");
-	data->player->pos_y = i;
-	data->player->pos_x = j;
+	data->player->pos_y = i + 0.5;
+	data->player->pos_x = j + 0.5;
 	if ((data->map_info->map)[i][j] == 'N')
 	{
 		set_dir(data->player, NO);

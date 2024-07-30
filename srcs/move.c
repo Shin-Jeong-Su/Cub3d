@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 19:08:40 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/30 11:15:24 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:42:02 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	move_forward(t_data *data)
 {
 	double	new_x;
 	double	new_y;
-
 	new_x = data->player->pos_x + data->player->dir_x * MOVESPEED;
 	new_y = data->player->pos_y + data->player->dir_y * MOVESPEED;
 	if (check_validate(new_y, new_x, data->map_info))

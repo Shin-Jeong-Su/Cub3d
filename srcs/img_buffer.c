@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buffer.c                                           :+:      :+:    :+:   */
+/*   img_buffer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:18:17 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 11:38:12 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:28:10 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	get_texture_index(t_ray *ray, t_texture_info *tex_info, t_texture **tex)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			tex_info->index = WE;
-		else
 			tex_info->index = EA;
+		else
+			tex_info->index = WE;
 	}
 	else
 	{
 		if (ray->dir_y > 0)
-			tex_info->index = SO;
-		else
 			tex_info->index = NO;
+		else
+			tex_info->index = SO;
 	}
 	*tex = &(tex_info->tex_tab[tex_info->index]);
 }

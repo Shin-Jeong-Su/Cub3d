@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:02:58 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/26 18:35:53 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:12:52 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void	check_surrounded_by_wall(int i, int j, char **map)
 	{
 		ny = i + dy[k];
 		nx = j + dx[k];
-		if (ny < 0 || nx < 0 || map[ny] == 0 || \
-		ft_strlen(map[ny]) < (size_t)nx)
-			continue ;
+		// if (ny < 0 || nx < 0 || map[ny] == 0 || \
+		// ft_strlen(map[ny]) < (size_t)nx)
+		// 	continue ;
 		if (map[ny][nx] == ' ')
 			err("Error: map: not surrounded by wall\n");
 	}
