@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 11:03:41 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/01 19:10:13 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:10:57 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	check_validate(double *n_y, double *n_x, char **map, t_player *player)
 {
 	double	x;
 	double	y;
-	double	cx;
-	double	cy;
 
 	x = player->pos_x;
 	y = player->pos_y;
