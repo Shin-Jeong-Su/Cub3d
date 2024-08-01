@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:18:17 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/01 16:20:14 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:28:52 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	mapping_to_texture(t_ray *ray, t_player *player, \
 	tex_info->tex_x = (int)(ray->wall_x * (double)tex->width);
 	if (ray->side == 0 && ray->dir_x >= 0)
 		tex_info->tex_x = tex->width - tex_info->tex_x - 1;
-	if (ray->side == 1 && ray->dir_y < 0)
+	if (ray->side == 1 && ray->dir_y < 0) // ray->dir_x -> ray->dir_y 로 수정. 이것 때문에 텍스쳐 좌우 대칭이 안맞았었음.
 		tex_info->tex_x = tex->width - tex_info->tex_x - 1;
 	tex_info->step = 1.0 * tex->height / ray->line_height;
 	tex_info->pos = (ray->draw_start - SCREENHEIGHT / 2 + ray->line_height / 2) \
