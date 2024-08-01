@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:04:15 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/30 12:40:53 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/01 19:03:34 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	set_dir(t_player *player, int where)
 {
 	if (where == NO)
 	{
-		player->dir_y = 1;
+		player->dir_y = -1;
 		player->dir_x = 0;
 	}
 	else if (where == SO)
 	{
-		player->dir_y = -1;
+		player->dir_y = 1;
 		player->dir_x = 0;
 	}
 	else if (where == WE)
