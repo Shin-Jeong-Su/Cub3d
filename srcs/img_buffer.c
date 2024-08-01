@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:18:17 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/01 19:06:09 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:07:42 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	mapping_to_texture(t_ray *ray, t_player *player, \
 		ray->wall_x = player->pos_x + ray->perp_wall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
 	tex_info->tex_x = (int)(ray->wall_x * (double)tex->width);
-	if (ray->side == 0 && ray->dir_x >= 0)
+	if (ray->side == 0 && ray->dir_x > 0)
 		tex_info->tex_x = tex->width - tex_info->tex_x - 1;
 	if (ray->side == 1 && ray->dir_y < 0)
 		tex_info->tex_x = tex->width - tex_info->tex_x - 1;
