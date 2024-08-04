@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:44:59 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 18:02:58 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/04 13:23:10 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	key_press(int key, t_data *data)
 	if (key == ESC)
 		exit_cub(data);
 	if (key == LEFT)
-		data->player->rotate = 1;
-	if (key == RIGHT)
 		data->player->rotate = -1;
+	if (key == RIGHT)
+		data->player->rotate = 1;
 	if (key == W)
-		data->player->move_y = 1;
-	if (key == S)
 		data->player->move_y = -1;
+	if (key == S)
+		data->player->move_y = 1;
 	if (key == A)
 		data->player->move_x = -1;
 	if (key == D)
@@ -41,13 +41,13 @@ int	key_release(int key, t_data *data)
 {
 	if (key == ESC)
 		exit_cub(data);
-	if (key == LEFT && data->player->rotate <= 1)
+	if (key == LEFT && data->player->rotate <= -1)
 		data->player->rotate = 0;
-	if (key == RIGHT && data->player->rotate >= -1)
+	if (key == RIGHT && data->player->rotate >= 1)
 		data->player->rotate = 0;
-	if (key == W && data->player->move_y == 1)
+	if (key == W && data->player->move_y == -1)
 		data->player->move_y = 0;
-	if (key == S && data->player->move_y == -1)
+	if (key == S && data->player->move_y == 1)
 		data->player->move_y = 0;
 	if (key == A && data->player->move_x == -1)
 		data->player->move_x = 0;
