@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:04:15 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/01 19:03:34 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:04:20 by seunghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	set_plane(t_player *player, int where)
 	}
 	else if (where == WE)
 	{
-		player->plane_y = 0.66;
+		player->plane_y = -0.66;
 		player->plane_x = 0;
 	}
 	else if (where == EA)
 	{
-		player->plane_y = -0.66;
+		player->plane_y = 0.66;
 		player->plane_x = 0;
 	}
 }
