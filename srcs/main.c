@@ -6,22 +6,16 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:38:33 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/29 12:31:32 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/05 10:50:38 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	chl(void)
-{
-	system("leaks cub3D");
-}
-
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	atexit(chl);
 	parse(ac, av, &data);
 	display(&data);
 }
