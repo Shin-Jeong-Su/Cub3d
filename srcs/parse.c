@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:55:56 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/28 17:38:53 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/05 11:57:47 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	check_file_name(char *file)
 	char	*dot;
 
 	dot = ft_strrchr(file, '.');
+	if (dot == 0)
+		err("Error: argument\n");
 	if (ft_strncmp(dot, ".cub", 5) != EXIT_SUCCESS)
 		err("Error: argument\n");
 }

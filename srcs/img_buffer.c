@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:18:17 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/04 11:33:34 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:56:00 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	get_texture_index(t_ray *ray, t_texture_info *tex_info, t_texture **tex)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			tex_info->index = WE;
-		else
 			tex_info->index = EA;
+		else
+			tex_info->index = WE;
 	}
 	else
 	{
 		if (ray->dir_y > 0)
-			tex_info->index = SO;
-		else
 			tex_info->index = NO;
+		else
+			tex_info->index = SO;
 	}
 	*tex = &(tex_info->tex_tab[tex_info->index]);
 }
