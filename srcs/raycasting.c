@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 13:19:44 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/30 19:06:22 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/05 10:48:32 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void	dda(t_ray *ray, char **map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		// printf("map_y : %d\n",ray->map_y);
-		// printf("map_x : %d\n",ray->map_x);
 		if (map[ray->map_y][ray->map_x] && map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}

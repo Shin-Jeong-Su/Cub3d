@@ -5,7 +5,6 @@ DBG = -g -fsanitize=address
 IFLAGS = -I includes
 DEPFLAGS = -MMD -MP
 RM = rm -rf
-
 SRC = main\
 	err\
 	init\

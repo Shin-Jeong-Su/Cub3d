@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 10:42:40 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/04 19:09:20 by seunghan         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:48:41 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ int	rendering(t_data *data)
 	init_img_info(&img_info, data->mlx_info);
 	clear_buffer(data->buffer);
 	update_player_position(data);
-	printf("p_y : %.3f\n",data->player->pos_y);
-	printf("p_x : %.3f\n",data->player->pos_x);
-	printf("map : %c\n",data->map_info->map[(int)data->player->pos_y][(int)data->player->pos_x]);
 	raycasting(data);
 	y = -1;
 	while (++y < SCREENHEIGHT)
