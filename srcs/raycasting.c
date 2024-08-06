@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 13:19:44 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/05 10:48:32 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/06 19:17:52 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ static void	dda(t_ray *ray, char **map)
 	}
 }
 
-static void	calc_draw_range(t_ray *ray)
+static void	calc_draw_range(t_ray *ray, double pos_x, double pos_y)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = ray->sidedist_x - ray->deltadist_x;
+		ray->perp_wall_dist = (ray->map_x - pos_x + (1 - ray->step_x) / 2) \
+								/ ray->dir_x;
 	else
-		ray->perp_wall_dist = ray->sidedist_y - ray->deltadist_y;
+		ray->perp_wall_dist = (ray->map_y - pos_y + (1 - ray->step_y) / 2) \
+								/ ray->dir_y;
 	ray->line_height = (int)(SCREENHEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + SCREENHEIGHT / 2;
 	if (ray->draw_start < 0)
@@ -94,7 +96,7 @@ void	raycasting(t_data *data)
 	{
 		set_ray(x, data->ray, data->player);
 		dda(data->ray, data->map_info->map);
-		calc_draw_range(data->ray);
+		calc_draw_range(data->ray, data->player->pos_x, data->player->pos_y);
 		set_img_buffer(x, data);
 	}
 }
