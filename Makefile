@@ -2,7 +2,6 @@ NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 DBG = -g -fsanitize=address
-IFLAGS = -I includes
 DEPFLAGS = -MMD -MP
 RM = rm -rf
 SRC = main\
