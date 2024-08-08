@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:04:55 by jeshin            #+#    #+#             */
-/*   Updated: 2024/07/26 18:36:01 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/08 17:05:13 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	get_start_line(char **line, int fd)
 
 	*line = get_next_line(fd);
 	if (*line == 0)
-		err("Error: map");
+		err("Error: map\n");
 	tab = ft_split(*line, ' ');
 	i = -1;
 	if (tab[0] == 0)
-		err("Error: map");
+		err("Error: map\n");
 	if (!ft_strncmp(tab[0], "\n", 2))
 	{
 		free_tab(tab);
@@ -32,6 +32,22 @@ static void	get_start_line(char **line, int fd)
 		return ;
 	}
 	free_tab(tab);
+}
+
+static void	check_lineflip_in_map(char *line)
+{
+	int	flg;
+	int	i;
+
+	flg = 0;
+	i = -1;
+	while (line[++i])
+	{
+		if (!flg && line[i] == '\n' && (line[i + 1] && line[i + 1] == '\n'))
+			flg = 1;
+		if (flg && (line[i] != '\n' && line[i] != ' '))
+			err("Error: map\n");
+	}
 }
 
 static void	set_map(char **start, t_map_info *map_info)
@@ -51,6 +67,7 @@ static void	set_map(char **start, t_map_info *map_info)
 		free(tmp);
 		line = joined;
 	}
+	check_lineflip_in_map(joined);
 	map_info->map = ft_split(joined, '\n');
 	free(joined);
 }

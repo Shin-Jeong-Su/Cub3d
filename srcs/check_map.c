@@ -6,7 +6,7 @@
 /*   By: jeshin <jeshin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:02:58 by jeshin            #+#    #+#             */
-/*   Updated: 2024/08/05 10:48:20 by jeshin           ###   ########.fr       */
+/*   Updated: 2024/08/08 17:06:04 by jeshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	check_surrounded_by_wall(int i, int j, char **map)
 	{
 		ny = i + dy[k];
 		nx = j + dx[k];
+		if ((size_t)j >= ft_strlen(map[ny]))
+			err("Error: map: not surrounded by wall\n");
 		if (map[ny][nx] == ' ')
 			err("Error: map: not surrounded by wall\n");
 	}
@@ -67,7 +69,7 @@ static void	try_case(int i, int j, t_data *data)
 	else if (map[i][j] == 'N' || map[i][j] == 'S' || \
 	map[i][j] == 'W' || map[i][j] == 'E')
 	{
-		check_surrounded_by_wall(i, j, map);
+		check_surrounded_by_wall(i, j, data->map_info->map);
 		save_player_info(i, j, data);
 	}
 	else if (map[i][j] == '0')
